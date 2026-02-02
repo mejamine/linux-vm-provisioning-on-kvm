@@ -13,6 +13,4 @@
       --console pty,target_type=serial
       --import
       --noautoconsole
-  args:
-    creates: "{{ vm_image }}"
   delegate_to: kvm01
