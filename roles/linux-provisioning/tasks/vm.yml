@@ -1,8 +1,8 @@
-- name: Define the VM using XML
-  community.libvirt.virt:
-    name: "{{ vm_name }}"
-    state: defined
-    xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
+- name: Define VM using virsh
+  ansible.builtin.command: >
+    virsh define {{ lookup('template', 'vm-template.xml.j2') }}
+  args:
+    creates: "/etc/libvirt/qemu/{{ vm_name }}.xml"
 
 - name: Start the VM
   community.libvirt.virt:
