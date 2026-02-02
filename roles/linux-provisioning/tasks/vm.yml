@@ -1,8 +1,13 @@
+- name: Render VM XML template to file
+  ansible.builtin.template:
+    src: vm-template.xml.j2
+    dest: "{{ libvirt_pool_dir }}/{{ vm_name }}.xml"
+
 - name: Define VM using virsh
   ansible.builtin.command: >
-    virsh define {{ lookup('template', 'vm-template.xml.j2') }}
+    virsh define {{ libvirt_pool_dir }}/{{ vm_name }}.xml
   args:
-    creates: "/etc/libvirt/qemu/{{ vm_name }}.xml"
+    creates: "{{ libvirt_pool_dir }}/{{ vm_name }}.xml"
 
 - name: Start the VM
   community.libvirt.virt:
