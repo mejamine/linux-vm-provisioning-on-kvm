@@ -7,7 +7,7 @@
 - name: Create VM disk from cloud image
   ansible.builtin.command: >
     qemu-img create -f qcow2
-    -F qcwo2
+    -F qcow2
     -b {{ libvirt_pool_dir }}/{{ base_image_name }}
     {{ vm_image }} {{ vm_disk_size }}
   args:
