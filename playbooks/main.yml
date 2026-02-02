@@ -1,5 +1,5 @@
 - name: linux vm provisioning
-  hosts: local
+  hosts: kvm_hosts
   become: true
   roles:
    - linux-provisioning
