@@ -1,13 +1,13 @@
 # VM identity
-vm_name: cloud-vm02
+vm_name: amine-ansible-vm01
 vm_memory: 2048
 vm_vcpus: 2
 vm_disk_size: 20G
 vm_os_variant: ubuntu22.04
 
 # Libvirt
-libvirt_pool: amine-pool
-libvirt_pool_dir: /home/admin/amine
+libvirt_pool: amin-pool
+libvirt_pool_dir: /mnt/storage/amin
 libvirt_network: amine-net
 
 # Cloud image
