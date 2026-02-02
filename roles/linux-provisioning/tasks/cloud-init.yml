@@ -8,9 +8,16 @@
     src: meta-data.j2
     dest: /tmp/{{ vm_name }}-meta-data
 
+- name: Ensure genisoimage is installed
+  ansible.builtin.package:
+    name: genisoimage
+    state: present
+
 - name: Create cloud-init seed ISO
   ansible.builtin.command: >
-    cloud-localds {{ seed_iso }}
+    genisoimage -output {{ seed_iso }}
+    -volid cidata
+    -joliet -rock
     /tmp/{{ vm_name }}-user-data
     /tmp/{{ vm_name }}-meta-data
   args:
