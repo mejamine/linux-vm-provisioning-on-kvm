@@ -1,0 +1,5 @@
+- name: linux vm provisioning
+  hosts: local
+  become: true
+  roles:
+   - linux-provisioning
