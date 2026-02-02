@@ -1,6 +1,7 @@
-- name: Create and start VM via virt-install
+- name: Create and start VM via virt-install on remote KVM
   ansible.builtin.command: >
     virt-install
+      --connect qemu:///system
       --name {{ vm_name }}
       --memory {{ vm_memory }}
       --vcpus {{ vm_vcpus }}
@@ -14,3 +15,4 @@
       --noautoconsole
   args:
     creates: "{{ vm_image }}"
+  delegate_to: kvm01
