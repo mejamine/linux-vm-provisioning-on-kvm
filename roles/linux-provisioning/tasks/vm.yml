@@ -3,3 +3,5 @@
     name: "{{ vm_name }}"
     state: running
     xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
+  register: vm_defined
+  changed_when: vm_defined.changed

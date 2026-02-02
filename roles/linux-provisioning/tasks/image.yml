@@ -1,8 +1,10 @@
-- name: Download cloud image
+- name: Download base cloud image
   ansible.builtin.get_url:
     url: "{{ base_image_url }}"
     dest: "{{ libvirt_pool_dir }}/{{ base_image_name }}"
     mode: '0644'
+  args:
+    creates: "{{ libvirt_pool_dir }}/{{ base_image_name }}"
 
 - name: Create VM disk from cloud image
   ansible.builtin.command: >
