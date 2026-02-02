@@ -7,4 +7,4 @@
   community.libvirt.virt:
     name: "{{ vm_name }}"
     state: running
-    xml: "{{ lookup('template', libvirt_pool_dir + '/' + vm_name + '.xml') }}"
+    xml: "{{ lookup('template', 'templates/vm-template.xml.j2') }}"
