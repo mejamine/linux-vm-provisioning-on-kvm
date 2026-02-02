@@ -17,9 +17,8 @@
   </features>
 
   <cpu mode='host-model'/>
-  
   <clock offset='utc'/>
-  
+
   <on_poweroff>destroy</on_poweroff>
   <on_reboot>restart</on_reboot>
   <on_crash>restart</on_crash>
@@ -28,14 +27,14 @@
     <!-- Primary Disk -->
     <disk type='file' device='disk'>
       <driver name='qemu' type='qcow2'/>
-      <source file='{{ libvirt_pool_dir }}/{{ vm_name }}.qcow2'/>
+      <source file='{{ vm_image }}'/>
       <target dev='vda' bus='virtio'/>
     </disk>
 
     <!-- Cloud-init ISO -->
     <disk type='file' device='cdrom'>
       <driver name='qemu' type='raw'/>
-      <source file='{{ libvirt_pool_dir }}/{{ vm_name }}-seed.iso'/>
+      <source file='{{ seed_iso }}'/>
       <target dev='hdb' bus='ide'/>
       <readonly/>
     </disk>
