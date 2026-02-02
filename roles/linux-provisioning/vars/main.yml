@@ -7,7 +7,7 @@ vm_os_variant: ubuntu22.04
 
 # Libvirt
 libvirt_pool: amine-pool
-libvirt_pool_dir: /var/lib/libvirt/images
+libvirt_pool_dir: /home/admin/amine
 libvirt_network: amine-net
 
 # Cloud image
