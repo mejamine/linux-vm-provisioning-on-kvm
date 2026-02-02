@@ -1,23 +1,5 @@
-- name: Define and start VM
+- name: Define and start VM using XML
   community.libvirt.virt:
     name: "{{ vm_name }}"
     state: running
-    memory_mb: "{{ vm_memory }}"
-    vcpus: "{{ vm_vcpus }}"
-    os_variant: "{{ vm_os_variant }}"
-    disks:
-      - name: "{{ vm_name }}.qcow2"
-        pool: "{{ libvirt_pool }}"
-        device: disk
-      - name: "{{ vm_name }}-seed.iso"
-        pool: "{{ libvirt_pool }}"
-        device: cdrom
-    networks:
-      - network: "{{ libvirt_network }}"
-    graphics: none
-    console: pty
-
-- name: Ensure VM is running
-  community.libvirt.virt:
-    name: "{{ vm_name }}"
-    state: running
+    xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
