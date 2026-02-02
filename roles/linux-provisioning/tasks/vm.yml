@@ -9,7 +9,8 @@
   args:
     creates: "{{ libvirt_pool_dir }}/{{ vm_name }}.xml"
 
-- name: Start the VM
-  community.libvirt.virt:
-    name: "{{ vm_name }}"
-    state: running
+- name: Start the VM using virsh
+  ansible.builtin.command: virsh start {{ vm_name }}
+  args:
+    creates: "/var/run/libvirt/qemu/{{ vm_name }}.pid"  # optional idempotence check
+
