@@ -1,7 +1,10 @@
-- name: Define and start VM using XML
+- name: Define the VM using XML
+  community.libvirt.virt:
+    name: "{{ vm_name }}"
+    state: defined
+    xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
+
+- name: Start the VM
   community.libvirt.virt:
     name: "{{ vm_name }}"
     state: running
-    xml: "{{ lookup('template', 'vm-template.xml.j2') }}"
-  register: vm_defined
-  changed_when: vm_defined.changed
